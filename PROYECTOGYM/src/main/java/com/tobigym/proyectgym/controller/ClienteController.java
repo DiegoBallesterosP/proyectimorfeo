@@ -67,14 +67,14 @@ public class ClienteController {
     }
 
     // convertir cliente a list
-    // private ArrayList<Cliente> obtenerCliente(HttpServletRequest request) {
-    // ArrayList<Cliente> cliente = (ArrayList<Cliente>) request.getSession()
-    // .getAttribute("cliente");
-    // if (cliente == null) {
-    // cliente = new ArrayList<>();
-    // }
-    // return cliente;
-    // }
+    private ArrayList<Cliente> obtenerCliente(HttpServletRequest request) {
+    ArrayList<Cliente> cliente = (ArrayList<Cliente>) request.getSession()
+    .getAttribute("cliente");
+    if (cliente == null) {
+    cliente = new ArrayList<>();
+    }
+    return cliente;
+    }
 
     // private void guardarCliente(ArrayList<Cliente> cliente, HttpServletRequest
     // request) {
