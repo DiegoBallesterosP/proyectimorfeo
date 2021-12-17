@@ -5,8 +5,6 @@ public class InstructorDto {
     private String nombres;
     private String apellidos;
 
-    private ClienteDto cliente;
-
     // ClienteDto clienteDto;
 
     public InstructorDto() {
@@ -35,14 +33,6 @@ public class InstructorDto {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
-    }
-
-    public ClienteDto getClienteDto() {
-        return cliente;
-    }
-
-    public void setClienteDto(ClienteDto cliente) {
-        this.cliente = cliente;
     }
 
 }

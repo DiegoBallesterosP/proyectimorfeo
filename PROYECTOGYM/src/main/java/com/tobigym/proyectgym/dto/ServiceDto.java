@@ -6,15 +6,6 @@ public class ServiceDto {
     private Double precio;
     private String periodo;
 
-    ClienteDto clienteDto;
-
-    public ServiceDto(Long id, Double precio, String periodo, ClienteDto clienteDto) {
-        this.id = id;
-        this.precio = precio;
-        this.periodo = periodo;
-        this.clienteDto = clienteDto;
-    }
-
     public ServiceDto() {
     }
 
@@ -40,14 +31,6 @@ public class ServiceDto {
 
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
-    }
-
-    public ClienteDto getClienteDto() {
-        return clienteDto;
-    }
-
-    public void setClienteDto(ClienteDto clienteDto) {
-        this.clienteDto = clienteDto;
     }
 
 }

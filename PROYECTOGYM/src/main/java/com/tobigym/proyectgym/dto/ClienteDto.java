@@ -11,6 +11,8 @@ public class ClienteDto {
 
     private InstructorDto instructor;
 
+    private ServiceDto servicio;
+
     // InstructorDto instructorDto;
 
     public ClienteDto() {
@@ -77,6 +79,14 @@ public class ClienteDto {
      */
     public void setInstructor(InstructorDto instructor) {
         this.instructor = instructor;
+    }
+
+    public ServiceDto getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(ServiceDto servicio) {
+        this.servicio = servicio;
     }
 
 }
