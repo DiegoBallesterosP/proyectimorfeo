@@ -13,8 +13,6 @@ public class ClienteDto {
 
     private ServiceDto servicio;
 
-    // InstructorDto instructorDto;
-
     public ClienteDto() {
 
     }
@@ -67,16 +65,10 @@ public class ClienteDto {
         this.genero = genero;
     }
 
-    /**
-     * @return InstructorDto return the instructor
-     */
     public InstructorDto getInstructor() {
         return instructor;
     }
 
-    /**
-     * @param instructor the instructor to set
-     */
     public void setInstructor(InstructorDto instructor) {
         this.instructor = instructor;
     }
