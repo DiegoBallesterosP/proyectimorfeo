@@ -27,7 +27,7 @@ public class CriteriaCliente implements CLCriteriaRepository {
         // cq.select(cliente);
 
         Predicate predicadoNombres = cb.equal(cliente.get("nombres"), nombres);
-        Predicate predicadoEdad = cb.like(cliente.get("edad"), "%" + edad + "%");
+        Predicate predicadoEdad = cb.equal(cliente.get("edad"), edad);
         cq.where(predicadoNombres, predicadoEdad);
         return em.createQuery(cq).getResultList();
 

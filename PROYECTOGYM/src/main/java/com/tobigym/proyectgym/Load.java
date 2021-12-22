@@ -39,6 +39,7 @@ class Load {
             c2.setCedula((long) 1032547896);
             c2.setEdad("25 años");
             c2.setGenero("Mujer");
+
             clienteService.save(c2);
 
             Cliente c3 = new Cliente();

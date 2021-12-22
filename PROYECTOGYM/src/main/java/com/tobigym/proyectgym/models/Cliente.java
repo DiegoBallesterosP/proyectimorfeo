@@ -28,48 +28,8 @@ public class Cliente {
     @OneToOne
     Servicio servicio;
 
-    public Cliente(Long id, String nombres, String apellidos, Long cedula, String edad, String genero,
-            Instructor instructor, Servicio servicio) {
-        this.id = id;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.cedula = cedula;
-        this.edad = edad;
-        this.genero = genero;
-        this.instructor = instructor;
-        this.servicio = servicio;
-    }
-
     public Cliente() {
 
-    }
-
-    public Cliente(Long id, String nombres, String apellidos, Long cedula, String edad, String genero,
-            Instructor instructor) {
-        this.id = id;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.cedula = cedula;
-        this.edad = edad;
-        this.genero = genero;
-        this.instructor = instructor;
-    }
-
-    public Cliente(Long id, String nombres, String apellidos, Long cedula, String edad, String genero) {
-
-        this.id = id;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.cedula = cedula;
-        this.edad = edad;
-        this.genero = genero;
-
-    }
-
-    public Cliente(Long id, String nombres, String apellidos) {
-        this.id = id;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
     }
 
     public Long getId() {
@@ -96,22 +56,6 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
-    public Instructor getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
-    }
-
-    public Servicio getServicio() {
-        return servicio;
-    }
-
-    public void setServicio(Servicio servicio) {
-        this.servicio = servicio;
-    }
-
     public Long getCedula() {
         return cedula;
     }
@@ -134,6 +78,22 @@ public class Cliente {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+    public Servicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
     }
 
 }
