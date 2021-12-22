@@ -4,23 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.tobigym.proyectgym.dto.ClienteDto;
-import com.tobigym.proyectgym.dto.InstructorDto;
-import com.tobigym.proyectgym.dto.Mensaje;
+
 import com.tobigym.proyectgym.models.Cliente;
 import com.tobigym.proyectgym.service.ClienteService;
 import com.tobigym.proyectgym.service.InstructorService;
 
-import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -57,8 +54,21 @@ public class ClienteController {
     // Crear cliente //
 
     @PostMapping("/clientesav")
-    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente) {
-        return new ResponseEntity<Cliente>(this.clienteService.save(cliente), HttpStatus.CREATED);
+    public ResponseEntity<?> save(@RequestBody Cliente cliente) {
+        Map<String, Object> response = new HashMap<>();
+        Cliente clientenew = cliente;
+
+        if (clienteService.existsByNombres(cliente.getNombres())) {
+
+            response.put("mensaje", "El cliente ya existe!");
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+
+        } else {
+            response.put("mensaje", "El cliente ha sido creado con éxito!");
+            response.put("cliente", clientenew);
+            return new ResponseEntity<Cliente>(this.clienteService.save(cliente), HttpStatus.CREATED);
+        }
+
     }
 
     // Eliminar cliente //
