@@ -52,11 +52,10 @@ public class ClienteController {
     }
 
     // Crear cliente //
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/clientesav")
     public ResponseEntity<?> save(@RequestBody Cliente cliente) {
         Map<String, Object> response = new HashMap<>();
-        Cliente clientenew = cliente;
 
         if (clienteService.existsByNombres(cliente.getNombres())) {
 
@@ -65,8 +64,8 @@ public class ClienteController {
 
         } else {
             response.put("mensaje", "El cliente ha sido creado con éxito!");
-            response.put("cliente", clientenew);
-            return new ResponseEntity<Cliente>(this.clienteService.save(cliente), HttpStatus.CREATED);
+            this.clienteService.save(cliente);
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
         }
 
     }
