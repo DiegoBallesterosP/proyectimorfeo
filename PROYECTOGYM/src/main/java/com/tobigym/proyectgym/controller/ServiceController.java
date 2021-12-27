@@ -47,20 +47,19 @@ public class ServiceController {
     }
 
     @PostMapping("/serviciosav")
-    private ResponseEntity<?> save(@RequestBody Servicio servicioDto) {
+    private ResponseEntity<?> save(@RequestBody Servicio servicio) {
         Map<String, Object> response = new HashMap<>();
 
-        if (servicioService.existsByPeriodo(servicioDto.getPeriodo())) {
+        if (servicioService.existsByPeriodo(servicio.getPeriodo())) {
 
-            response.put("mensaje", "El cliente ya existe!");
-            return new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+            response.put("mensaje", "El servicio ya existe!");
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 
         } else {
-            response.put("mensaje", "El cliente ha sido creado con éxito!");
-            servicioService.save(servicioDto);
-
+            response.put("mensaje", "El servicio ha sido creado con éxito!");
+            this.servicioService.save(servicio);
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
         }
-        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 
     }
 

@@ -49,20 +49,19 @@ public class InstructorController {
     // Crear instructor
 
     @PostMapping("/instructorsav")
-    private ResponseEntity<?> save(@RequestBody Instructor instructorDto) {
+    private ResponseEntity<?> save(@RequestBody Instructor instructor) {
         Map<String, Object> response = new HashMap<>();
 
-        if (instructorService.existsByNombres(instructorDto.getNombres())) {
+        if (instructorService.existsByNombres(instructor.getNombres())) {
 
-            response.put("mensaje", "El cliente ya existe!");
-            return new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+            response.put("mensaje", "El instructor ya existe!");
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 
         } else {
             response.put("mensaje", "El cliente ha sido creado con éxito!");
-            instructorService.save(instructorDto);
-
+            this.instructorService.save(instructor);
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
         }
-        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 
     }
 
